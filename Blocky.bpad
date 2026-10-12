@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<document version="1.9" language="en-us">
+    <include target="Library.DateTime" />
+    <include target="Library.Math" />
+    <include target="Library.Logic" />
+    <include target="Library.Lookup" />
+    <include target="Library.Statistics" />
+    <include target="Library.Text" />
+    <include target="Library.Scripts" />
+    <report name="Report1" title="Report 1" unit="in" pagesize="816, 1056">
+        <heading>Library Blocks</heading>
+        <paragraph />
+        <paragraph>Calling "ApplyBlock" to a library block definition:</paragraph>
+        <paragraph>
+            <dynexp formula="Blocky.ApplyBlock(Library.Examples.Rectangle, [&quot;Length&quot;, &quot;Width&quot;], [20 ft, 10 ft])" fontsize="8">
+                <expbody>Blocky.ApplyBlock(Library.Examples.Rectangle, ["Length", "Width"], [20 ft, 10 ft])</expbody>
+                <expresult> = {Length: 20 ft, Width: 10 ft, TextboxOrigin: , Perimeter: 60 ft, Area: 200 ft^2, Diagonal: 22.361 ft}</expresult>
+            </dynexp>
+        </paragraph>
+        <paragraph />
+        <paragraph>Instance of library block (MyLibraryBlock)</paragraph>
+        <block name="MyLibraryBlock" title="Block 2" definition="Library.Examples.Rectangle">
+            <parameters>
+                <param name="Length"><num>5 in</num></param>
+                <param name="Width"><num>3 in</num></param>
+                <param name="TextboxOrigin" />
+            </parameters>
+            <content>
+                <heading level="3">Rectangle Properties</heading>
+                <paragraph />
+                <embed>
+                    <canvas title="Canvas 1" name="Canvas1" unit="in" size="6.5 in; 2.1 in; scaletofit" scale="0.7">
+                        <include target="Library.Geometry" />
+                        <lines pts="1.1033950617284, 1.71422067901234, 0; 1.1033950617284, 0.602469135802469, 0" linethickness="1.5" />
+                        <lines pts="1.1033950617284, 0.602469135802469, 0; 3.6658950617284, 0.602469135802469, 0" linethickness="1.5" />
+                        <lines pts="3.6658950617284, 0.602469135802469, 0; 3.6658950617284, 1.71422067901234, 0" linethickness="1.5" />
+                        <lineardim startpoint="1.1033950617284, 0.602469135802469, 0" endpoint="1.1033950617284, 1.71422067901234, 0" pointondimline="0.381172839506174, 1.58890046296296, 0" linethickness="1" linecolor="#B2B2B2" refformula="Width"><num>3 in</num></lineardim>
+                        <lines pts="1.1033950617284, 1.71422067901234, 0; 3.6658950617284, 0.602469135802469, 0" linethickness="1" linecolor="#B2B2B2" />
+                        <lineardim startpoint="1.1033950617284, 0.602469135802469, 0" endpoint="3.6658950617284, 0.602469135802469, 0" pointondimline="3.55478395061728, 0.324691358024692, 0" linethickness="1" linecolor="#B2B2B2" refformula="Length"><num>5 in</num></lineardim>
+                        <lineardim startpoint="1.1033950617284, 1.71422067901234, 0" endpoint="3.6658950617284, 0.602469135802469, 0" pointondimline="2.92779048271661, 2.1488386126335, 0" linethickness="1" linecolor="#B2B2B2" refformula="Diagonal"><num>5.830951894845301 in</num></lineardim>
+                        <lines pts="1.1033950617284, 1.71422067901234, 0; 3.6658950617284, 1.71422067901234, 0" linethickness="1.5" />
+                        <planecontainer origin="4.55246913580247, 0.411496913580247, 0" dir="0.39351851851851904, 0, 0" normal="0, 0, 0.15485682441701"><textvalue>*image not to scale</textvalue></planecontainer>
+                    </canvas>
+                </embed>
+                <paragraph />
+                <paragraph>
+                    <dynexp mathlayout="on" formula="Length=5 in">
+                        <expbody>Length=5 in</expbody>
+                    </dynexp>
+                    <break type="tab" />
+                    <break type="tab" />
+                    <dynexp mathlayout="on" formula="Width=3 in">
+                        <expbody>Width=3 in</expbody>
+                    </dynexp>
+                </paragraph>
+                <paragraph />
+                <paragraph>
+                    <dynexp mathlayout="on" formula="Perimeter = 2*(Length + Width)">
+                        <expbody>Perimeter = 2*(Length + Width)</expbody>
+                        <expresult> = 16 in</expresult>
+                    </dynexp>
+                    <break type="tab" />
+                    <break type="tab" />
+                </paragraph>
+                <paragraph />
+                <paragraph>
+                    <dynexp mathlayout="on" formula="Area = Length*Width">
+                        <expbody>Area = Length*Width</expbody>
+                        <expresult> = 15 in^2</expresult>
+                    </dynexp>
+                </paragraph>
+                <paragraph />
+                <paragraph>
+                    <dynexp mathlayout="on" formula="Diagonal = Sqrt(Length^2 + Width^2)">
+                        <expbody>Diagonal = Sqrt(Length^2 + Width^2)</expbody>
+                        <expresult> = 5.831 in</expresult>
+                    </dynexp>
+                </paragraph>
+                <paragraph />
+            </content>
+        </block>
+        <paragraph />
+        <paragraph>Calling "ApplyBlock" on an instance of a library block (MyLibraryBlock)</paragraph>
+        <paragraph>
+            <dynexp formula="Blocky.ApplyBlock(MyLibraryBlock, [&quot;Length&quot;, &quot;Width&quot;], [20 ft, 10 ft])" fontsize="8">
+                <expbody>Blocky.ApplyBlock(MyLibraryBlock, ["Length", "Width"], [20 ft, 10 ft])</expbody>
+                <expresult> = {Length: 20 ft, Width: 10 ft, TextboxOrigin: , Perimeter: 60 ft, Area: 200 ft^2, Diagonal: 22.361 ft}</expresult>
+            </dynexp>
+        </paragraph>
+        <break type="page" />
+        <heading>Local Blocks</heading>
+        <paragraph />
+        <paragraph>Local block source (change this section, hit F5, and it propagates through the document)</paragraph>
+        <section name="Section1" capture="True">
+            <paragraph>
+                <dynexp formula="a=2">
+                    <expbody>a=2</expbody>
+                </dynexp>
+            </paragraph>
+            <paragraph>
+                <dynexp formula="b=5">
+                    <expbody>b=5</expbody>
+                </dynexp>
+            </paragraph>
+            <paragraph>
+                <dynexp formula="c=2*a+b/2">
+                    <expbody>c=2*a+b/2</expbody>
+                    <expresult> = 6.5</expresult>
+                </dynexp>
+            </paragraph>
+        </section>
+        <paragraph />
+        <paragraph>Local block definition (for reference):</paragraph>
+        <paragraph>
+            <valuefield type="inline" name="LocalBlockDefinition" showidentifier="False"><textvalue>Library.Docs.ScenarioDefinition(nodeof(Report1.Section1), {a: nodeof(Report1.Section1.a), b: nodeof(Report1.Section1.b)}, {c: nodeof(Report1.Section1.c)})</textvalue></valuefield>
+        </paragraph>
+        <paragraph />
+        <paragraph>Local block instance:</paragraph>
+        <block name="MyLocalBlock" title="Block 1" definition="Library.Docs.ScenarioDefinition(nodeof(Report1.Section1), {a: nodeof(Report1.Section1.a), b: nodeof(Report1.Section1.b)}, {c: nodeof(Report1.Section1.c)})">
+            <parameters>
+                <param name="a"><num>9</num></param>
+                <param name="b"><num>20</num></param>
+                <param name="TextboxOrigin" />
+            </parameters>
+            <content>
+                <paragraph>
+                    <dynexp formula="a=9">
+                        <expbody>a=9</expbody>
+                    </dynexp>
+                </paragraph>
+                <paragraph>
+                    <dynexp formula="b=20">
+                        <expbody>b=20</expbody>
+                    </dynexp>
+                </paragraph>
+                <paragraph>
+                    <dynexp formula="c=2*a+b/2">
+                        <expbody>c=2*a+b/2</expbody>
+                        <expresult> = 28</expresult>
+                    </dynexp>
+                </paragraph>
+            </content>
+        </block>
+        <paragraph />
+        <paragraph>Calling "ApplyBlock" on an instance of a local block (MyLocalBlock)</paragraph>
+        <paragraph>
+            <dynexp formula="Blocky.ApplyBlock(MyLocalBlock, [&quot;a&quot;, &quot;b&quot;], [200, 150])" fontsize="8">
+                <expbody>Blocky.ApplyBlock(MyLocalBlock, ["a", "b"], [200, 150])</expbody>
+                <expresult> = {a: 200, b: 150, TextboxOrigin: , c: 475}</expresult>
+            </dynexp>
+        </paragraph>
+        <paragraph />
+        <paragraph>Calling "ApplyBlock" with the full local block definition (not recommended, but possible):</paragraph>
+        <paragraph>
+            <dynexp formula="Value1=Blocky.ApplyBlock(Library.Docs.ScenarioDefinition(nodeof(Report1.Section1), {a: nodeof(Report1.Section1.a), b: nodeof(Report1.Section1.b)}, {c: nodeof(Report1.Section1.c)}), [&quot;a&quot;, &quot;b&quot;], [200, 150])" fontsize="8" showidentifier="False">
+                <expbody>Blocky.ApplyBlock(Library.Docs.ScenarioDefinition(nodeof(Report1.Section1), {a: nodeof(Report1.Section1.a), b: nodeof(Report1.Section1.b)}, {c: nodeof(Report1.Section1.c)}), ["a", "b"], [200, 150])</expbody>
+                <expresult> = {a: 200, b: 150, TextboxOrigin: , c: 475}</expresult>
+            </dynexp>
+        </paragraph>
+        <paragraph />
+        <paragraph />
+        <break type="page" />
+        <heading>Array &lt;-&gt; Dict</heading>
+        <paragraph />
+        <paragraph>To make this possible, I added the routine "ArrayToDict", which does the reverse of "Library.Scripts.KeysAndValues".</paragraph>
+        <paragraph />
+        <paragraph>
+            <dynexp formula="ArrayInputs=[&quot;a&quot;,5;&quot;b&quot;,10]" showformula="True" showsteps="false" showresult="True">
+                <expbody>ArrayInputs=["a",5;"b",10]</expbody>
+            </dynexp>
+        </paragraph>
+        <paragraph>
+            <dynexp formula="DictInputs=Blocky.ArrayToDict(ArrayInputs)">
+                <expbody>DictInputs=Blocky.ArrayToDict(ArrayInputs)</expbody>
+                <expresult> = {a: 5, b: 10}</expresult>
+            </dynexp>
+        </paragraph>
+        <paragraph>Note that calling "KeysAndValues" reverses this operation.</paragraph>
+        <paragraph>
+            <dynexp formula="KeysAndValues(DictInputs)">
+                <expbody>KeysAndValues(DictInputs)</expbody>
+                <expresult> = [a, 5; ...]</expresult>
+            </dynexp>
+        </paragraph>
+        <paragraph />
+        <paragraph>The dictionary produced by ArrayToDict can be passed as inputs to a block definition.</paragraph>
+        <paragraph>
+            <dynexp formula="MyLocalBlock.BlockDefinition(DictInputs)">
+                <expbody>MyLocalBlock.BlockDefinition(DictInputs)</expbody>
+                <expresult> = {a: 5, b: 10, TextboxOrigin: , c: 15}</expresult>
+            </dynexp>
+        </paragraph>
+        <paragraph />
+        <paragraph>So, the ApplyBlock routine first converts the vectors of keys and values to a vertical array (same format as "KeysAndValues"), and then converts that to a dictionary for input into the block.</paragraph>
+        <paragraph />
+        <break type="page" />
+        <heading>Native Block Tables</heading>
+        <paragraph />
+        <paragraph>Now, with the ApplyBlock function, you can easily create a blocktable.</paragraph>
+        <paragraph>For visual simplicity, the column with "Block" is formatted such that the result does not show.</paragraph>
+        <paragraph />
+        <paragraph>Local block</paragraph>
+        <embed>
+            <table name="Table1" title="Table 1">
+                <stylerule range="A1:D1" fontweight="bold" />
+                <stylerule range="A1:D5" border="&#xA;    Border(&quot;AllSides&quot;, &quot;Solid&quot;, 1, &quot;#000000&quot;); &#xA;    Border(&quot;BetweenColumns&quot;, &quot;Solid&quot;, 1, &quot;#000000&quot;); &#xA;    Border(&quot;BetweenRows&quot;, &quot;Solid&quot;, 1, &quot;#000000&quot;); " />
+                <stylerule range="C3:C5" showresult="False" />
+                <row>
+                    <c><textvalue>a</textvalue></c>
+                    <c><textvalue>b</textvalue></c>
+                    <c><textvalue>Block</textvalue></c>
+                    <c><textvalue>c</textvalue></c>
+                </row>
+                <row>
+                    <c><num>1</num></c>
+                    <c><num>40</num></c>
+                    <c formula="Blocky.ApplyBlock(MyLocalBlock, $A$1:$B$1, A2:B2)" showresult="False" />
+                    <c formula="$C2[D$1]"><num>22</num></c>
+                </row>
+                <row>
+                    <c><num>2</num></c>
+                    <c><num>60</num></c>
+                    <c formula="Blocky.ApplyBlock(MyLocalBlock, $A$1:$B$1, A3:B3)" />
+                    <c formula="$C3[D$1]"><num>34</num></c>
+                </row>
+                <row>
+                    <c><num>3</num></c>
+                    <c><num>80</num></c>
+                    <c formula="Blocky.ApplyBlock(MyLocalBlock, $A$1:$B$1, A4:B4)" />
+                    <c formula="$C4[D$1]"><num>46</num></c>
+                </row>
+                <row>
+                    <c><num>4</num></c>
+                    <c><num>100</num></c>
+                    <c formula="Blocky.ApplyBlock(MyLocalBlock, $A$1:$B$1, A5:B5)" />
+                    <c formula="$C5[D$1]"><num>58</num></c>
+                </row>
+            </table>
+        </embed>
+        <paragraph />
+        <paragraph>Defining the block column:</paragraph>
+        <paragraph>
+            <image source="Resource3" />
+        </paragraph>
+        <paragraph />
+        <paragraph />
+        <paragraph>Defining the properties column (this allows you to drag it down and across for all output values).</paragraph>
+        <paragraph>
+            <image source="Resource1" />
+        </paragraph>
+        <paragraph />
+        <paragraph>Example with more outputs: Library.Examples.Rectangle</paragraph>
+        <paragraph />
+        <embed>
+            <table name="Table2" title="Table 2">
+                <stylerule range="A1:F1" fontweight="bold" />
+                <stylerule range="A1:F5" border="&#xA;    Border(&quot;AllSides&quot;, &quot;Solid&quot;, 1, &quot;#000000&quot;); &#xA;    Border(&quot;BetweenColumns&quot;, &quot;Solid&quot;, 1, &quot;#000000&quot;); &#xA;    Border(&quot;BetweenRows&quot;, &quot;Solid&quot;, 1, &quot;#000000&quot;); " />
+                <stylerule range="C3:C5" showresult="False" />
+                <row>
+                    <c><textvalue>Length</textvalue></c>
+                    <c><textvalue>Width</textvalue></c>
+                    <c><textvalue>Block</textvalue></c>
+                    <c><textvalue>Perimeter</textvalue></c>
+                    <c><textvalue>Area</textvalue></c>
+                    <c><textvalue>Diagonal</textvalue></c>
+                </row>
+                <row>
+                    <c><num>3 in</num></c>
+                    <c><num>4 in</num></c>
+                    <c formula="Blocky.ApplyBlock(Library.Examples.Rectangle, $A$1:$B$1, A2:B2)" showresult="False" />
+                    <c formula="$C2[D$1]"><num>14 in</num></c>
+                    <c formula="$C2[E$1]"><num>12 in^2</num></c>
+                    <c formula="$C2[F$1]"><num>5 in</num></c>
+                </row>
+                <row>
+                    <c><num>10 in</num></c>
+                    <c><num>10 in</num></c>
+                    <c formula="Blocky.ApplyBlock(Library.Examples.Rectangle, $A$1:$B$1, A3:B3)" />
+                    <c formula="$C3[D$1]"><num>40 in</num></c>
+                    <c formula="$C3[E$1]"><num>100 in^2</num></c>
+                    <c formula="$C3[F$1]"><num>14.142135623730951 in</num></c>
+                </row>
+                <row>
+                    <c><num>1 in</num></c>
+                    <c><num>10 in</num></c>
+                    <c formula="Blocky.ApplyBlock(Library.Examples.Rectangle, $A$1:$B$1, A4:B4)" />
+                    <c formula="$C4[D$1]"><num>22 in</num></c>
+                    <c formula="$C4[E$1]"><num>10 in^2</num></c>
+                    <c formula="$C4[F$1]"><num>10.04987562112089 in</num></c>
+                </row>
+                <row>
+                    <c><num>2 in</num></c>
+                    <c><num>3 in</num></c>
+                    <c formula="Blocky.ApplyBlock(Library.Examples.Rectangle, $A$1:$B$1, A5:B5)" />
+                    <c formula="$C5[D$1]"><num>10 in</num></c>
+                    <c formula="$C5[E$1]"><num>6 in^2</num></c>
+                    <c formula="$C5[F$1]"><num>3.605551275463989 in</num></c>
+                </row>
+            </table>
+        </embed>
+        <paragraph />
+        <paragraph />
+    </report>
+    <script name="Blocky" title="Blocky" type="Module">// Routines for helping with making native block tables
+// Written by Alex Baker, 2026
+
+include(Library.Lookup);
+
+// ArrayToDict converts an array to a dictionary. 
+// The reverse is "Library.Scripts.KeysAndValues".
+Module.ArrayToDict = (array) =&gt; {
+    var result = {};
+    if (Columns(array) != 2) {
+        return "error: want a 2-column input array";
+    }
+    for (i = 1; i &lt;= Rows(array); i++) {
+        result[array(i,1)] = array(i,2);
+    }
+    return result;
+};
+
+// ApplyBlock passes keys and values to a block or block definition, in a format that is conducive to block tables.
+Module.ApplyBlock = (block,keys,values) =&gt; {
+    // Only accept row vectors
+    if (Rows(keys) != 1 || Rows(values) != 1) {
+        return "error: want row vectors for keys and values";
+    }
+    if (Columns(keys) != Columns(values)) {
+        return "error: key and value inputs must be same length";
+    }
+    try {
+        result = block.BlockDefinition(Module.ArrayToDict(Transpose(ConcatRows(keys,values))));
+    } catch {
+        result = block(Module.ArrayToDict(Transpose(ConcatRows(keys,values))));
+    }
+    return result;
+};</script>
+    <resource name="Resource3" type="image/png">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</resource>
+    <resource name="Resource1" type="image/png">iVBORw0KGgoAAAANSUhEUgAAAhAAAACHCAYAAABH/GBbAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7OHOkAABRMSURBVHic7d1fqCPXfcDx3zRLUijFJU+F2PXW21HldYqadESIX7J+2RKJ+9ALJtGlDcQjO1AT25UCyzoPm4XGZiEjNgnbPuxVFtoirTHcl2XkZFtwTCEmvYpTkc3uZU5NNzh9CpSEUJqGNacPe+dkZjT6M/qz+jPfDwik+WmkM+eeq/nNOUc6ltZaCwAAQAa/teoCAACAzUMCAQAAMiOBAAAAmZFAAACAzEggAABAZiQQAAAgMxIIAACQ2VQJRLlcFqXU8ksTYVnWTLFp4osoAwAAeUYPBAAAyIwEAgAAZLaQBMKyLHNrtVoT4+FwSHR7r9eTcrk89XsqpWL7L6N8Ub1eb+T+AADkzdwJhGVZ4vu+aK1Fay3NZlN6vZ6Jl8tl8TzPxG/fvi22bUu5XI7tV61WM73v3t6e2dfzvJHJx6zli+r1elKtVkVrLY1GI3MdAQCwbeZKIHq9njiOI5VKxWzzfV8ODg5MXERiJ939/X2zPblfFp1Ox9xvNBrS7/eHeg5mLV+UUsokDwAA4L65eyBKpdLQtsFgMDY+bvu0kr0EjuMstHyhQqGQObkBAGDbzZ1ARE/GoehJOS0+bvu0kr0N/X5/oeULBUEg1Wo1NuwBAEDu6Sk4jqODIBgZ833fPBaRocee55nH4f205zmOE3s8ioho13XNY9d1Y4+j+85avujrBEEwtB8AAHk2dQ9EoVCIfVshnLR4eHgo1WrVbPc8LzbnIJy4GP22hFLKXNmH27MOE+zu7pp9B4PB0NyF0Kzli7Jt20z0zPJNEQAAtpWlmR0IAAAy4oekAABAZidWXQBgE9y9u+oSrI+TJ1ddAgDrYGwCwWJSQIiRvhCDngBkmh6IvE+RsCyLOqAOJMyl83z1TS8MgKixkyg5cVAHQh2IRBKIPFcDdQAgikmUAAAgMxIIAACQGQkEAADIjAQiA6WUWJYlrVZr1UVZqegvkkZvoUXVE/UNAOuLBAIzcV1XtNbm5jgOP/MNADlCAoGFqNVq0u/3h9YRAQBsp0wJRNilHN7q9bpYlpW7k8bt27dj9cBS39NJtp1xccuy5MaNG7F4tP2tQ5tLlpd2ACBPMiUQhUIh1nXdbreXV7I11m63TR24rivVanUtTmir1O12xXVdsW07NW5Z1lDbiSYRlmWJ4zgm7nme7OzsmLhSSgqFgnnOqPd5UNLKG13lFQC23dQJRHh1tbu7a7Z5nrecUq256HGfO3dORGToannbtdvtoQmUo5ZUH9V2wgQ0jF+8eNHEG41G7DUKhYLI8fLsqzZNeQFg202dQBwdHYmIrPzKD+shOYmyVquNHFoY13aUUhPbVrPZFBER3/cXfBSz4X8BADIkEMVicbklwUYLhxvSEohxbce2bRMfNQzkeZ44jrM2Q0WTygsAeTB1AhGO7166dMlsC68M8yZ63GF95L0LOxzCSbsqH9V2XNeNxS9cuGDiyd9+CIcuwqGMVZqmvACw7SauxhkVBIEUCgUzdu26bi4nUrquG/vhpCAIVlqeVWi320N/e9/3xbbt1CtzrbVYlhVrO9E5E2F83BLy0ef4vr/SSYtp5S0Wi0ykBJAbrMY5AXVAHQgrUYpQBwAS+CEpAACQGQkEAADIjAQCAABklmkSJfLqK/KVr6y6DOuBegCA+yZOogREmDWH32ASJQDhWxiTUQe/mX0f+dmD3Ll4UeTWrR+vuhhYkCeeeGLVRQA2HgnEBNQBX9+T4zq4devH0ux+YK7X+fbf8ouuIiLvv//+yt776OiIBAJYACZRAgCAzJhECazIT//7/+Tff/I/8sEc/Bf++p7Inz76O/Lwhz+06qIAWJAcfHQB60lrkQ9+QOR3f/v+v+H1a1dEROSzn39+xSUbNm/Zfvm/93I9BAZsI4YwjrVaLSmXy6suxtIppVK/XVMul83aDvV6farXCetLKTW0z7xxAMB6I4E4PnnmZWXRvb29oW31el1KpZJorUVrLYPBYOLqkkopqdVq5v7p06cXGs+bZ3bPyDdefVm+8erL8mThodTnPFl4KHZ7+62bJvbe3XdjsVe//MXYvtevXTGx8P2Sr5fcJ0vZrl+7Is/snhnab9zrzkMpJSdOnDC35557LlMcwPxyn0AopeTixYvi+/6qi7J0o5KCdrsdWxmz0+lIt9ud+nWPjo6kWBz97YJ549vumd0z8uyLL4t39XV54fwr8trNd2In6jA58K6+Lt8LfmFuzWeflvfuvivv3X1XPnP24/LazXdMTN35kRl2CL1w/hX5XvAL8zj6/HB7WhIwrmwSSTCSvnXwXfGuvr6wegoppeTxxx+XO3fuyL179+TevXsyGAzk8uXLU8UBLEbu50DYti22bUuv11t1UZZKKSXNZtMsyR7q9XriOE7subZtS7/fT32dXq8n1WrVPI723HieJ8Vica54o9GY6zg3zb/96z+LiMgnP3XW9Cg8cvJU7ET/T1cvywvnX5FPfupsbN/oc6L3RUTO7jwt//kfR5nKcv6r35Rnds/I9WtX5LOff96UZ1zZ3rv7rjz74v3k4erXX8n0frOybVvu3bsX21ar1eT27dtTxQEsRu57IPLi0qVLI3tZSqVS6nal1NC2SqUiWmtxXVeCIBCttTiOI1praTQac8fz5iOPnpKjWz8c+5wbr//DTJMX//CPsvfqPPviy3Lzxv1eg4enKNsjJ08NJTarMmkYLO/DZMCi5b4HIg/C3pVKpZKaFMxiMBiIbdtLi2+KP/+z35O/+YvfT4298Pd3JfivX43d/yN/8JjsPP05Myzwwvn4Vfx7d9+dqVzfePVlee3mO5n3e/jRU+b+IydPjS3bIr3xxhuys7OTGrtz587EtvKlL31J7ty5M3McQHYkEDlQrVbH/prmYDBI3T7qQ1spZXotovcXFd8k3/nBz+U7P/j5XK9x/qvflPNf/aZcv3bFTFb0rr4+85X9M7tn5IXzr8gjJ09N8ewHW7ZRPv3pTw8NO0zrE5/4hHzta18b2V4nxQHMhiGMLRf2PoRf0QznP1iWJb1eTyqVytB8B6XU0LyIUKvVkkKhIO1227xeeF8pNXc8zx59zDYTFZvPPi1y3AuQxatf/qLYj//JzL/X8NOfpPd4pJVtHTz33HNSKpXkpZdemikOYHb0QGy5cM5BSCklhUIhts11XanX6+abGHt7e+YrlknhPIVisSiVSkVarZa5v4j4ppl3CCPNIydPSfGjH5P37r5rhhHCiY3jXL92RdSdH8m3Dr6b+T1DV7/+ipzdGZ0gJMu2KLMMYVy+fFkGg4F8//vfT91vUhzAfHKfQCS/VWBZljiOI4eHhyst14O0v79vfkhKjhOKcRMau92udDodkeNvUSSHR+aNb5J5hzAO/vHv5K1vH8RO+m+/dVOObv3QnKD/8tmX5DNnPy6PPmbHhg6eLDwkr918Rx45eUrefuum3Lzx+lzJQ/h7DWGicv3alaHXTJZtUbIOYbzxxhvS7XZHJgeT4gDml/sEInmFvu1s20493iwJU/S5k15rlnie7P7VX0vhj4tDv60Q/apk+NXJ5HPC5EFEzLDCuNdJ+szZj8ce7zz9uViy8NnPPy+PPmaPfc2337oZG9J4svCQFD/6sbkSmWmEvRUnTsQ/wsIkZFIcwPxyn0AAq/bJT52V7wW/mLjexLhkYFwszbQn+EllC+MP2qREgEQBWD4SCGBNLHsRrfBbFLOc8Gcp2zO7Z+To1g9l5+nPZd4XwPojgQBWxLJEfv2+yC9/tfyr5WrtC1KtfUFEHsz7iYh8vfMv5v6v790/XgDbgwQCU3vqqVWXYLs8/OEPycMf/tCqiwEAM7H0mFlsacs+I4/yPdExdOvWj1ddBCzIE088seoiABtvYg9E3mfJW5ZFHVhPyZtvvrnqYqzUU089JT/72Zty5swUT95S/C8AiJrYA5H3DwzqgDoQ6kCEOgCQwE9ZAwCAzEggAABAZiQQAAAgs9wnEEops1KlZVlSr9dXXaSlaLVaseNMrnwZroUxbR0opaRcLpv7yX3mjWPxsrT18LkAMEquE4hwZcogCERrLVprGQwG0mq1Vl20hWq1WmbRKq21BEEghULBJBH1el1KpVKmOlBKmRU7lVJy+vTphcaxWKPaerjce9Le3t4DLyOAzZLrH5JKW1iqVqvJ7du3V1amZeh2u+L7vnmcPO52ux173Ol0ZG9vb+yKnFFHR0dSLBaXFsf8RrX1g4ODoaXUty2BBrAcfI0zIfzwDE+em14H4ZXnqGPo9Xpy4cKFodU4o8cdvZ9c/jzK8zwpFotzxadNWh60TW8HaZJtXRI9Fcl2s411AGAOeowJ4a0kIjoIgtjjTeb7vnYcR/u+r49/UjJ2TL7va9d1h/aL1kNaHbiua+KO4yw8vm42vR2kSbZ1ffx38X1fB0EwdMzbWAcAZpfrORBJ5XJZPM8T27ZXXZSF6vf7cnBwYMa+Pc8zExhnNRgMxtbTvHEsR6/XM5Mok209nA+RHNIAgDQkEMfCiYTr2oU+q/AEce7cObOt0WhIv983kygHg8HYfZOUUlIqlYbuLyqO5alUKiaRlON2H6pWq7K/v7/C0gHYKOO6J/LSZel53shu9G2og7Su6nFDFEEQxOojGvc8LzYUEr0FQTB3fF1tQztIiv6dk0Nc0Zvv+1pvaR0AmF3uE4hwjsAo21AHnufF5jkkEybXdWNxx3G053nmcbIOPM8zJ5Xo/UXF19Gmt4O0dp78u0cxBwLAJLlPIEZddUXj28B1XXNsaQmT4zgmnjypJOvAcZyxEyznja+jTSnnOMlehnGJMwkEgEn4GucE1AF1INSBCHUAIIFJlAAAIDMSCAAAkBkJBAAAyGziHAgACDEHAkBo4mJaef/AYOIYdSDUgQgXFAASGMIAAACZkUAAAIDMSCAAAEBmJBAAACCz3CcQSimzvLFlWbHVCbdJ9BjTlvIul8uZ6kApZV5HKTW0z7xxLFfY7pNarVasrYQrtgJAUq4TCKWUFAoFCYLALHE8GAyk1+utumgLZVmW+L5vjrFWq8WSiHAp82gdtFqtsa+plJJarWbunz59eqFxLNfe3t7QtlarJc1m07SDIAikUCiQRABIlesEwrZt0VqLbdtmW61Wk4ODg5WWa5GUUuI4jlQqFbOt0WhIv983j9vttuzv75vHnU5Hut3u1O9xdHQkxWJxaXEs1qjksNvtiu/75nHa/wcAhFhMKyH8cG00GiJbUgfJY1BKyd7enhweHkqv15MLFy7I4eHhyH2i93u9nlSr1dT38TxPisXiXPGw3tfNNrQDSfS6FQoFc0zh9nHHuC11AGAxct0DkabZbMrOzs6qi7FQvu+LZVnSarWkXq9LoVCQTqdj4qVSKXW/tK7rSqUiWmtxXdcM/TiOI1praTQac8exXJcuXYr1MoTCnqperxebAwEAo5BAHF9Vhx+YnudtXZdtOCTT7XZlMBiIiMiNGzfmes3BYDC2nuaNY/HCuT3R4ayofr8vBwcHZg6E53mpE24BQEgg7guvisPu2W36RkCv15PBYCBaazk8PJTDw0PRWkuz2TQ9DGFSkTTqBK+UMr0W0fuLimM5qtVqbK5LVPi3PnfunNkWzpVhEiWAVHqMCeGtFASBdhzHPN70OvA8T7uuO7TdcRwdBIHWKcc4rg48z9MiknoLgmDu+Lra9Hbg+/7Ievd9X+vjY0z+DaLbNr0OACxWrhMI3/djJ0qttXZdN3bC3fQ6CIJg6MQQnkxCyWN2HEd7nmceJ+vA8zxz0oneX1R8HW16O0gK20VUMtn0PG+rkmkAi5XrBEKnXJklE4ptqIPwZBG9JTmOY2LJHovk88f1Xiwivo42pZzTSksg9HEyuc3/CwAWh69xTkAdUAdCHYhQBwASmEQJAAAyI4EAAACZkUAAAIDMSCAAAEBmEydRAkCISZQAQicmPSHvHxjMPKcOhDoQ4YICQAJDGAAAIDMSCAAAkBkJBAAAyIwEAgAAZEYCEaGU2uiJYq1WS8rlcmqsXC6LZVliWVbqcuWT4klKKfNeSqmhfeaNY/Hq9br5G4e3ZHsZFwOAKBKIiL29vVUXYWblclmazWZqrF6vS6lUkuPF02QwGEir1Zo6nkYpJbVazdw/ffr0QuNYDt/3zd9Zay2Hh4cmZllWLF6r1UgiAIxEAnFs0glznSml5OLFi+L7fmq83W7L/v6+edzpdKTb7U4dn+To6EiKxeLS4lg+pZQ4jiOVSsVsazQa0u/3V1ouAGts3FKdeVm+N1zaOG2J402qA9/3h5ZgTtumI8c1KZ68n1z+PHrzPG/u+LrapHYwiuu62vf9kfHkMQZBEGsb21AHABaHHggRuXTp0sir921QKpVStyulpopHVSoV0VqL67oSBIForcVxHNFaS6PRmDuO5To4OIjNc4jyfV8sy5JWqyX1el0KhYJ0Op2VlRXAest9AtHr9USOT4yY3mAwENu2lxbH8oRzHDzPi81xODg4EBGRbrcrg8FARERu3LixsnICWG8Tf8p621Wr1a3/ieLwZJBk27YopcbG0yilTK9F9P6i4liO6DwXOZ7j0Gw2RSll2kHyf8GyLNnZ2SHZAzBs3PjGto95jhuPD8eKN6kOppnPoKcY2x4X9zxvZJ0FQTB3fF1tUjvIIvp3cV13KO44jvm7bGsdAJhNrhOIpG2cRKmPJ89FTw6O48QmLE6KJ+sgnAyZvL+o+DrapHYwSjJJ8zzPtJfoROJQmGBH9weAEAlExKYmEGk9KclEwnEcExt1pTkqnqyDSVel88bX0aaUc5JxbSRs/9Fbcl8ACFl6zAQAljCmDoQ6EKEORKgDAAm5/xYGAADIjgQCAABkRgIBAAAyI4EAAACZTZxECQAhJlECCI39JUo+LAAAQBqGMAAAQGYkEAAAIDMSCAAAkBkJBAAAyIwEAgAAZEYCAQAAMiOBAAAAmZFAAACAzP4fOEGn7Kr2boIAAAAASUVORK5CYII=</resource>
+</document>
